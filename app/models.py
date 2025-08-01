@@ -11,7 +11,7 @@ class Variant:
     variant_name: str
     variant_qty: int
     # variant_price: float
-    # variant_weight: float
+    variant_item_weight: float
     # variant_volume: float
 
 
@@ -76,7 +76,14 @@ class SplitByVolume(Component):
     pass
 
 class SplitByWeight(Component):
-    pass
+    def get_component_ppi(self, deal: 'Deal', variant: 'Variant') -> float:
+        if not variant.variant_item_weight:
+            return 0.0
+        # Расчет пропорции веса варианта в сделке
+        weight_ratio = variant.variant_item_weight * variant.variant_qty / deal.deal_weight
+        variant_cost = weight_ratio * self.base_value
+        variant_rounded_cost = round(variant_cost, 2)
+        return variant_rounded_cost
 
 
 class Deal:
@@ -85,6 +92,7 @@ class Deal:
         self.variants = variants
         self.components = components
         self.deal_qty = sum(v.variant_qty for v in self.variants)
+        self.deal_weight = sum(v.variant_item_weight * v.variant_qty for v in self.variants)
         # self.merchant_fee = sum(v.variant_qty * v.variant_price for v in self.variants)
 
 

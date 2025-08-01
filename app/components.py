@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-from app.models import SplitByQuantity, SimpleComponent, Component
+from app.models import SplitByQuantity, SimpleComponent, Component, SplitByWeight
 
 
 class ComponentRegistryEXW(Enum):
@@ -96,8 +96,24 @@ class ComponentRegistryEXW(Enum):
     )
 
 
+class ComponentRegistryDDP(Enum):
+    LASTMILEWAREHOUSE = SplitByWeight(
+        name='Last mile warehouse',
+        scheme='DDP',
+        base_value=0.0,
+        metadata={}
+    )
+
+    LASTMILECLIENT = SplitByWeight(
+        name='Last mile client',
+        scheme='DDP',
+        base_value=0.0,
+        metadata={}
+    )
+
+
 def create_component(
-        registry_key: ComponentRegistryEXW,
+        registry_key: ComponentRegistryEXW|ComponentRegistryDDP,
         base_value_override: float | None = None
 ) -> Component:
     """

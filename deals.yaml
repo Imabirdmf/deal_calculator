@@ -1,0 +1,43 @@
+- name: 'Small batch 1 variant'
+  is_small: true
+  variants:
+    - variant_name: 'Variant 1'
+      variant_qty: 10
+      variant_item_weight: 0
+  components:
+    - key: 'MERCHANTFEEEXW'
+      base_value_override: 3542.0
+    - key: 'FIRSTMILEEXW'
+      base_value_override: 315.67
+    - key: 'VATEXW'
+      base_value_override: 315.67
+    - key: 'WAREHOUSEOPS'
+      base_value_override: 315.67
+    - key: 'JPCCOMISSION'
+      base_value_override: 315.67
+    - key: 'SUBSIDYEXW'
+    - key: 'FINESEXW'
+
+- name: 'Small batch 2 variants'
+  is_small: true
+  variants:
+    - variant_name: 'Variant 1'
+      variant_qty: 142
+      variant_item_weight: 0
+    - variant_name: 'Variant 2'
+      variant_qty: 111
+      variant_item_weight: 0
+  components:
+    - key: 'MERCHANTFEEEXW'
+      base_value_override: 3542.0
+    - key: 'FIRSTMILEEXW'
+      base_value_override: 315.67
+    - key: 'VATEXW'
+      base_value_override: 315.67
+    - key: 'WAREHOUSEOPS'
+      base_value_override: 315.67
+    - key: 'JPCCOMISSION'
+      base_value_override: 315.67
+    - key: 'SUBSIDYEXW'
+    - key: 'FINESEXW'
+
